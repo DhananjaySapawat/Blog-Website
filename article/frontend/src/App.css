@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+body{
+  font-family: 'Roboto', sans-serif;
+  background-color: #FAFAFA;
+  margin: 0;
+}
+.header {
+  list-style-type: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width:94%;
+  background-color: rgb(93, 175, 68);
+  padding-right: 6%;
+  margin-bottom: 30px;
+}
+
+li h2 {
+  font-size: 40px;
+  margin-left:7.5%;
+  color: white;
+  
+}
+
+li button {
+  float:right;
+  font-size:20px;
+  position:relative;
+  bottom:75px;
+  margin:0px 10px 0px;
+  border: 1px solid white;
+  padding: 10px 20px 10px 20px;
+  background: rgb(93, 175, 68);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.create{
+    width:50%;
+    margin-left: 25%;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+.create input {
+    margin-bottom: 30px;
+    margin-top: 20px;
+    height:50px;
+    width:100%;
+    border:none;
+}
+#createTitle{
+     background-color: #F0F0F0;
+     margin-top: 10px;
+}
+#createDESCRIPTION{
+     min-height:500px;
+     border: none;
+     background-color: #F0F0F0;
+     width:100%;
+     margin-top: 10px;
+}
+#my-form input[type="file"]{
+  width:300px;
+  font-size: 15px;
+}
+#my-form input[type="file"]::-webkit-file-upload-button {
+  border: none;
+  padding: 10px 30px 10px 30px;
+  background: rgb(93, 175, 68);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.create label{
+    padding: 5px;
+}
+.createimg img{
+  width:100%;
+}

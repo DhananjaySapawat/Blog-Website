@@ -1,0 +1,40 @@
+.full{
+    width:60%;
+    margin-left: 17%;
+    margin-top:-30px;
+    background-color: white;
+    padding: 3%;
+}
+.fulldes{
+    padding-top: 30px;
+}
+.fullmid{
+    padding-top: 10px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid;
+}
+.fullmidright{
+    float: right;
+    margin-top:-20px;
+    font-size: 22px;
+} 
+.fullmidright span{
+    font-weight: bold;
+} 
+.fullmidtitle{
+    font-size: 28px;
+    font-weight: bold;
+}
+.fullbtn{
+    background-color: white;
+    border : none;
+    position: relative;
+    bottom: 2px;
+}
+.myfullimg {
+    width:100%;
+}
+.fullimg{
+     width:100%;
+     height:auto;
+}
