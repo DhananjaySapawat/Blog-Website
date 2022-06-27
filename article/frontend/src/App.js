@@ -2,12 +2,13 @@ import React,{ useState,useEffect } from 'react';
 import { Routes, Route ,Link } from "react-router-dom";
 import './App.css';
 import Home from './Home';
-import axios from 'axios';
 import YourArticle from './YourArticle';
 import Fullpost from './Fullpost';
 import Edit from './Edit';
 import ErrorPage from './ErrorPage';
-let t ;
+import axios from 'axios';
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
 function App() {
     /* Constant and variable */
     useEffect(() => {
@@ -16,7 +17,6 @@ function App() {
     const [btn,Setbtn] = useState("Write");
     const [link,Setlink] = useState("/create");
     const [logtext,Setlogtext] = useState("login");
-    const [loglink,Setloglink] = useState("/login");
     const [ApiData,SetApiData] = useState([]);
     const [change,Setchange] = useState([false]);
     const [currentid,Setcurrentid] = useState([]);
@@ -24,8 +24,9 @@ function App() {
     var Title = " ";
     var descr = " ";
     const [name,Setname] = useState("");
-    const CurrentUrl = "http://127.0.0.1:8000/current/";
-    const FullPostUrl= "http://localhost:8000/allpost/";
+    const CurrentUrl = "http://127.0.0.1:8000/";
+    const CurrentUserUrl = CurrentUrl +"current/";
+    const FullPostUrl = CurrentUrl + "allpost/";
     let data = {
     "type" : "add",
     "article_title": "",
@@ -35,17 +36,10 @@ function App() {
     "company": "python Programming",
     "date": ""
     }
-    /* importing images */
-    function importAll(r) {
-        let images = {};
-        r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
-        return images;
-     }
-    const images = importAll(require.context('./photos', false, /\.(png|jpe?g|svg|jfif|webp)$/));
     /* fetching data from api*/
     function fetchdata () {
         Setchange(true);
-        axios.get("http://127.0.0.1:8000/allpost/")
+        axios.get(FullPostUrl)
             .then(res => {
               data = res.data;
               SetApiData(data);
@@ -57,33 +51,29 @@ function App() {
     , [change]);
      /* fetching currentuser from api*/
     useEffect(() => {
-        axios.get(CurrentUrl)
+        axios.get(CurrentUserUrl)
           .then((response) => {
           Setcurrentid(response.data.current_id);
           Setname(response.data.current_user);
         });
-    }, [CurrentUrl]);
+    }, [CurrentUserUrl]);
     /* functions for Create app */
     function log(e){
       if(logtext === "login"){
         Setlogtext("logout");
-        Setloglink("/logout");
-        window.location.href='http://127.0.0.1:8000/login';    
+        window.location.href=CurrentUrl+'login/';    
       }
       else{
         Setlogtext("login");
-        Setloglink("/login");
-        window.location.href='http://127.0.0.1:8000/logout';    
+        window.location.href=CurrentUrl+'logout/';    
       }
     }
     function handleSubmit(e){
-        console.log("hello")
-        console.log(data)
+        data.username = name;
         axios.post(FullPostUrl, {
               data
             })
             .catch((err) => {});
-        console.log("hello2")
         Setchange(false);
     };
     function btnName(e){
@@ -123,8 +113,8 @@ function App() {
             console.log(e.target.value.substr(12));
         };
         function createimg (img) {
-          if(img!=""){
-            return <img className = "createpreview" src= {images[img]}
+          if(img!==""){
+            return <img className = "createpreview" src= {CurrentUrl + "media/"+img}
               alt="Cheetah!" />
           }
         }
@@ -171,7 +161,7 @@ function App() {
     Setchange(false);
   }
   function showname(){
-    if(name=="AnonymousUser"){
+    if(name==="AnonymousUser"){
       return ""
     }
     return name
@@ -179,11 +169,9 @@ function App() {
   function check(){
       if(name === "AnonymousUser"){
          Setlogtext("login");
-         Setloglink("/login");
       }
       else{
         Setlogtext("logout");
-        Setloglink("/logout");
       }
   }
   useEffect(() => {
@@ -192,12 +180,12 @@ function App() {
   return (
     <div className="App">
       <ul className='header'>
-        <li><h2>Greetings {showname()}</h2></li>
-        <li><Link to = {loglink}>
+        <Link to = ""><li><h2>Greetings {showname()}</h2></li></Link>
+        <li>
         <button onClick={log}>
             {logtext}
         </button>
-        </Link></li>
+        </li>
         {
           your_article()
         }
@@ -211,11 +199,11 @@ function App() {
         </Link></li>  
       </ul>
       <Routes>
-          <Route path="" element={ <Home currentid = {currentid} ApiData={ApiData} parentcolor = {changehappen} /> }  />  
+          <Route path="" element={ <Home currentid = {currentid} ApiData={ApiData} parentcolor = {changehappen} FullPostUrl={FullPostUrl} CurrentUrl = {CurrentUrl}/> }  />  
           <Route path="/create"element={ <Create username={name}/> }  />
-          <Route path="/yourarticle"element={ <YourArticle ApiData={ApiData} passchange = {changehappen}  username={name}/> }  />
-          <Route path="/editpages/:id"element={<Edit  passchange = {changehappen} ApiData={ApiData} />} />
-          <Route path="/pages/:id" element={<Fullpost ApiData={ApiData} />} />
+          <Route path="/yourarticle"element={ <YourArticle ApiData={ApiData} passchange = {changehappen}  username={name} FullPostUrl={FullPostUrl} CurrentUrl = {CurrentUrl}/> }  />
+          <Route path="/editpages/:id"element={<Edit  passchange = {changehappen} ApiData={ApiData} FullPostUrl={FullPostUrl} CurrentUrl = {CurrentUrl}/>} />
+          <Route path="/pages/:id" element={<Fullpost ApiData={ApiData} FullPostUrl={FullPostUrl} parentcolor = {changehappen} CurrentUrl = {CurrentUrl}/>} />
           <Route path='/*' element={<ErrorPage/>} />
       </Routes>
     </div>

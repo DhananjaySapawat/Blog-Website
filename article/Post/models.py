@@ -12,5 +12,6 @@ class Post(models.Model):
     company = models.CharField(max_length = 100,default="")
     likes = models.ManyToManyField(User,related_name ="likes")
     date = models.DateField(("Date"), default=datetime.date.today )
+    image = models.ImageField(upload_to='None', height_field=None, width_field=None, max_length=None, null=True, blank=True,default = "/empty.png")
     def number_of_likes(self):
         return self.likes.count()

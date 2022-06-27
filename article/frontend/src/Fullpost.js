@@ -2,20 +2,23 @@ import React, { useEffect, useState } from 'react';
 import {useParams} from "react-router-dom";
 import "./Fullpost.css"
 import 'font-awesome/css/font-awesome.min.css';
+import axios from 'axios';
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
 function Fullpost(prop) {
+    const CurrentUrl = prop.CurrentUrl;
     const { id } = useParams();
     const ArticleData = prop.ApiData.find(ArticleData => ArticleData.id === parseInt(id));
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const [starcolor,Setstarcolor] = useState(null);
+    const FullPostUrl = prop.FullPostUrl;
     useEffect(()=>{
-        window.scrollTo({top: 0});
+        document.body.scrollTo(0,0) ;
     },[])
-    function importAll(r) {
-        let images = {};
-        r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
-        return images;
+    var data = {
+        "type" : "like",
+        "id" : id
     }
-    const images = importAll(require.context('./photos', false, /\.(png|jpe?g|svg|jfif|webp)$/));
     function handlelike(full){
         if(full === null || full === undefined ){
             return "grey";
@@ -35,6 +38,11 @@ function Fullpost(prop) {
         else{
             Setstarcolor("grey")
         }
+        prop.parentcolor("yes");
+        axios.post(FullPostUrl, {
+              data
+            })
+        .catch((err) => {});
     }
     function readingTime(text) {
         const wpm = 225;
@@ -46,14 +54,13 @@ function Fullpost(prop) {
             Setstarcolor(handlelike(fulldata));
         },[fulldata]);
         if(fulldata != null){
-            console.log(fulldata);
             var date = fulldata.date.slice(-2)+" "+ months[Number(fulldata.date.substr(5,2))-1]+" .";
             var time = readingTime(fulldata.description);
             var PostTime = time + " min read";
             return (
 
                 <div className='full'>
-                    <div className='myfullimg'><img className = "fullimg" src= {images[fulldata.article_image]} 
+                    <div className='myfullimg'><img className = "fullimg" src= {CurrentUrl+"media/"+fulldata.article_image} 
                         alt="Cheetah!" /></div>
                     <div className='fullmid'>
                         <p className='fullmidtitle'>{fulldata.article_title} </p> 

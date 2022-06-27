@@ -19,7 +19,7 @@ function TopArticle(prop) {
     if(Posts!=null){
         return (
            ReversePost.slice(0,5).map(post =>(
-          <SmallPost islikedcolor = {handlelike(post.isliked)} passtocolor ={passchange} description = {post.description} title={post.article_title} username={post.username} imgsrc={post.article_image} date = {post.date} id = {post.id} currentid = {prop.currentid}  />
+          <SmallPost islikedcolor = {handlelike(post.isliked)} passtocolor ={passchange} description = {post.description} title={post.article_title} username={post.username} imgsrc={post.article_image} date = {post.date} id = {post.id} currentid = {prop.currentid}   FullPostUrl={prop.FullPostUrl} CurrentUrl = {prop.CurrentUrl}/>
         ))
       )
     }

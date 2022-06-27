@@ -1,15 +1,13 @@
 import React from 'react';
 import "./HorizontalPost.css";
-import axios from 'axios';
 import 'font-awesome/css/font-awesome.min.css';
 import { Link } from "react-router-dom";
+import axios from 'axios';
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
 function HorizontalPost(Post) {
-    function importAll(r) {
-        let images = {};
-        r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
-        return images;
-     }
-    const images = importAll(require.context('./photos', false, /\.(png|jpe?g|svg|jfif|webp)$/));
+    const CurrentUrl = Post.CurrentUrl;
+    const FullPostUrl = Post.FullPostUrl;
     let title = Post.title;
     let description = Post.description;
     let id = Post.id;
@@ -18,17 +16,15 @@ function HorizontalPost(Post) {
     "id": id,
      }
     function handledelete(e){
-        const url = "http://localhost:8000/allpost/";
-        axios.post(url, {
+        axios.post(FullPostUrl, {
             data
             })
             .catch((err) => {});
         Post.childchange(false);
     }
-    var imgsrc = Post.imgsrc;
-    imgsrc = images[imgsrc];
-  return (
-    <div className='horizontalpost'>
+    var imgsrc = CurrentUrl+"media/"+ Post.imgsrc;
+    return (
+      <div className='horizontalpost'>
         <div className='horizontalpostimg'>
           <img src= {imgsrc}
           alt="Cheetah!" />
@@ -40,7 +36,7 @@ function HorizontalPost(Post) {
           <Link to={"/editpages/"+id}><button className ="editbtn" ><i class="fa fa-edit"></i></button></Link>
           <Link to="/yourarticle"><button  className ="deletebtn" onClick={handledelete}><i class="fa fa-trash" ></i></button></Link>
         </div>
-    </div>
+      </div>
   )
 }
 

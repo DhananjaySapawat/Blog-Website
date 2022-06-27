@@ -11,7 +11,7 @@ function Home(prop){
   const [PageNumber,SetPageNumber] = useState(0);
   var pageCount = Math.ceil(Posts.length / PostsPerPage);
   useEffect(()=>{
-        window.scrollTo({top: 0});
+      document.body.scrollTo(0,0) ;
     },[PageNumber])
   function likecall(value){
      prop.parentcolor(value);
@@ -46,14 +46,14 @@ function Home(prop){
           if(end<=0){
             return (
               Postss.sort((a,b) => {return (a.id - b.id)}).slice(Postss.length-PostsPerPage,Postss.length).reverse().map((post,no)  =>(
-              <Latest islikedcolor = {handlelike(post.isliked)} currentid = {prop.currentid} passcolor = {likecall} title={post.article_title} description={post.description} imgsrc={post.article_image} date={post.date} username={post.username} place={post.company} id = {post.id} pg = {PageNumber} no = {no++}/>
+              <Latest islikedcolor = {handlelike(post.isliked)} currentid = {prop.currentid} passcolor = {likecall} title={post.article_title} description={post.description} imgsrc={post.article_image} date={post.date} username={post.username} place={post.company} id = {post.id} pg = {PageNumber} no = {no++}  FullPostUrl={prop.FullPostUrl} CurrentUrl = {prop.CurrentUrl}/>
                 ))
               )
           }
           else{
           return (
             Postss.sort((a,b) => {return (a.id - b.id)}).slice(start,end).reverse().map((post,no)  =>(
-            <Latest islikedcolor = {handlelike(post.isliked)} currentid = {prop.currentid} passcolor = {likecall}  title={post.article_title} description={post.description} imgsrc={post.article_image} date={post.date} username={post.username} place={post.company} id = {post.id} pg = {PageNumber} no = {no++}/>
+            <Latest islikedcolor = {handlelike(post.isliked)} currentid = {prop.currentid} passcolor = {likecall}  title={post.article_title} description={post.description} imgsrc={post.article_image} date={post.date} username={post.username} place={post.company} id = {post.id} pg = {PageNumber} no = {no++}  FullPostUrl={prop.FullPostUrl} CurrentUrl = {prop.CurrentUrl} />
               ))
             )
           }
@@ -61,7 +61,7 @@ function Home(prop){
   }
   return (
     <div>
-      <TopArticle  passcolor = {likecall} ApiData = {prop.ApiData}  currentid = {prop.currentid} />
+      <TopArticle  passcolor = {likecall} ApiData = {prop.ApiData}  currentid = {prop.currentid} FullPostUrl={prop.FullPostUrl} CurrentUrl = {prop.CurrentUrl} />
       {
        allpost(Posts)
       }

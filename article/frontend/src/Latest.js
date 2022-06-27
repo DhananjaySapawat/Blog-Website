@@ -3,11 +3,14 @@ import {Link} from "react-router-dom";
 import './Latest.css';
 import 'font-awesome/css/font-awesome.min.css';
 import axios from 'axios';
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
 function Latest (latestdata) {
     const [starcolor,Setstarcolor] = useState(latestdata.islikedcolor);
     useEffect(() =>{
         Setstarcolor(latestdata.islikedcolor);
     },[latestdata.islikedcolor])
+    const CurrentUrl = latestdata.CurrentUrl;
     let id = latestdata.id;
     let no = latestdata.no + 1 + latestdata.pg;
     let title = latestdata.title;
@@ -15,25 +18,18 @@ function Latest (latestdata) {
     let imgsrc = latestdata.imgsrc;
     var name  = latestdata.username;
     var place = latestdata.place;
-    const FullPostUrl= "http://localhost:8000/allpost/";
+    const FullPostUrl = latestdata.FullPostUrl;
     var data = {
         "type" : "like",
-        "id" : latestdata.id,
-        "currentid" : latestdata.currentid
+        "id" : latestdata.id
     }
-    function importAll(r) {
-        let images = {};
-        r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
-        return images;
-    }
-    const images = importAll(require.context('./photos', false, /\.(png|jpe?g|svg|jfif|webp)$/));
     function readingTime(text) {
         const wpm = 225;
         const words = text.trim().split(/\s+/).length;
         return Math.ceil(words / wpm);
     }
     let time = readingTime(description);
-    imgsrc = images[imgsrc];
+    imgsrc = CurrentUrl+"media/"+imgsrc;
     function handlestar(){
         if(starcolor === "grey"){
             Setstarcolor("orange")

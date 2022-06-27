@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {useParams} from "react-router-dom";
 import './Edit.css'
-import axios from 'axios';
 import {Link } from "react-router-dom";
+import axios from 'axios';
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
 function Edit(prop) {
+    const CurrentUrl = prop.CurrentUrl;
+    const FullPostUrl= prop.FullPostUrl;
     const { id } = useParams();
     const EditArticleData = prop.ApiData.find(EditArticleData => EditArticleData.id === parseInt(id));
     var Title = "";
@@ -20,12 +24,6 @@ function Edit(prop) {
         "date": ""
     }
     /* importing images */
-    function importAll(r) {
-        let images = {};
-        r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
-        return images;
-     }
-    const images = importAll(require.context('./photos', false, /\.(png|jpe?g|svg|jfif|webp)$/));
     const handleTitle = (e) => {
         e.preventDefault()
         Title = e.target.value;
@@ -40,7 +38,7 @@ function Edit(prop) {
     };
     function createimg (img) {
             if(img!==""){
-                return <img src= {images[img]}
+                return <img src= {CurrentUrl+"media/"+img}
                         alt="Cheetah!" />
             }
         }
@@ -52,8 +50,7 @@ function Edit(prop) {
         data.company = EditArticleData.company;
         data.username= EditArticleData.username;
         data.date = EditArticleData.date;
-        const url = "http://localhost:8000/allpost/";
-        axios.post(url, {
+        axios.post(FullPostUrl, {
               data
             })
             .catch((err) => {});
@@ -66,7 +63,7 @@ function Edit(prop) {
                 Setimgsrcc(editdata.article_image);
             }
         },[editdata]);
-        if(editdata != null){
+        if(editdata !== null){
             Title = editdata.article_title;
             descr = editdata.description;
             return (

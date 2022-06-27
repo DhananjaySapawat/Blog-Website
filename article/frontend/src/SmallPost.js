@@ -3,23 +3,20 @@ import {Link } from "react-router-dom";
 import './SmallPost.css';
 import 'font-awesome/css/font-awesome.min.css';
 import axios from 'axios';
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
 function SmallPost(smalldata) {
-    const FullPostUrl= "http://localhost:8000/allpost/";
+    const FullPostUrl= smalldata.FullPostUrl;
     const [starcolor,Setstarcolor] = useState(smalldata.islikedcolor);
+    const CurrentUrl = smalldata.CurrentUrl;
     useEffect(() =>{
         Setstarcolor(smalldata.islikedcolor);
     },[smalldata.islikedcolor])
     var data = {
         "type" : "like",
-        "id" : smalldata.id,
-        "currentid" : smalldata.currentid
+        "id" : smalldata.id
     }
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    function importAll(r) {
-        let images = {};
-        r.keys().map((item) => { images[item.replace('./', '')] = r(item); });
-        return images;
-    }
     function handlestar(){
         if(starcolor === "grey"){
             Setstarcolor("orange")
@@ -33,7 +30,6 @@ function SmallPost(smalldata) {
             })
         .catch((err) => {});
     }
-    const images = importAll(require.context('./photos', false, /\.(png|jpe?g|svg|jfif|webp)$/));
     function readingTime(text) {
         const wpm = 225;
         const words = text.trim().split(/\s+/).length;
@@ -47,7 +43,7 @@ function SmallPost(smalldata) {
     var date = smalldata.date.slice(-2)+" "+ months[Number(smalldata.date.substr(5,2))-1]+" .";
     var time = readingTime(smalldata.description);
     var imgsrc = smalldata.imgsrc;
-    imgsrc = images[imgsrc];
+    imgsrc = imgsrc = CurrentUrl+"media/"+imgsrc;
     return (
         <div className='small'  >  
             <img src= {imgsrc}
