@@ -5,7 +5,8 @@
 First clone the repository from Github and switch to the new directory:
 
     $ git clone https://github.com/DhananjaySapawat/PostArticleWeb.git
-    $ cd PostArticleWeb
+    $ cd blog website
+    $ cd article
     
 Activate the virtualenv for your project.
 
