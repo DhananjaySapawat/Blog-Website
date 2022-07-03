@@ -11,7 +11,7 @@ First clone the repository from Github and switch to the new directory:
 Activate the virtualenv for your project.
 
     $ python -m venv venv
-    $ source venv/bin/activate
+    $ source venv\Scripts\activate
     
 Install project dependencies:
 
