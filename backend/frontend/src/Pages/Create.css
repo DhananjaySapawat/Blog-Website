@@ -1,0 +1,65 @@
+    .create{
+      width:800px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+  }
+  .create input {
+      margin-bottom: 30px;
+      margin-top: 20px;
+      height:50px;
+      width:100%;
+      border:none;
+  }
+  #createTitle{
+       background-color: #F0F0F0;
+       margin-top: 10px;
+  }
+  #createDESCRIPTION{
+       min-height:500px;
+       border: none;
+       background-color: #F0F0F0;
+       width:100%;
+       margin-top: 10px;
+  }
+  #my-form input[type="file"]{
+    width:300px;
+    font-size: 15px;
+    margin-bottom:-13px;
+  }
+  #my-form input[type="file"]::-webkit-file-upload-button {
+    border: none;
+    padding: 10px 30px 10px 30px;
+    background: rgb(93, 175, 68);
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .create label{
+      padding: 5px;
+  }
+  .createimg img{
+    width:100%;
+    margin-top: 25px;
+  }
+  @media screen and (max-width: 1000px)  {
+    .create {
+      width:80%;
+    }
+  }
+  .create button{
+    border: none;
+    padding: 10px 30px 10px 30px;
+    background: rgb(93, 175, 68);
+    color: #fff;
+    font-size: 15px;
+    width:100%;
+    cursor: pointer;
+    border-radius: 5px;
+    float:left;
+    font-size: 15px;
+    margin-top: 20px;
+  }

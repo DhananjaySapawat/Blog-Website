@@ -1,0 +1,84 @@
+@media screen and (min-width: 1240px) {
+    .post{
+        width:50%;
+        margin-left:4%;
+        background-color: white;
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+    }
+}
+@media screen and (max-width: 1240px)  {
+    .post{
+
+        width:78%;
+        margin-top: 40px;
+        margin-left:auto;
+        margin-right:auto;
+        background-color: white;
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+    }
+}
+.post img{
+    margin-top: 70px;
+    width:100%;
+    height:auto;
+}
+.read{
+    cursor: pointer;
+}
+.in{
+    float:right;
+    font-weight: bold;
+    font-size: 13px;
+}
+.in span{
+    font-weight: bold;
+}
+.favstar{
+    background-color: white;
+    border: none;
+}
+.btnreadd{
+    background-color: white;
+    border: none;
+    margin-right: -05px;
+}
+.latesticon-icon{
+    font-size: 30px;
+    position: relative;
+    top: 5px;
+    margin-right: 8px;
+}
+.latesticon {
+    font-size: 15px;
+}
+@media screen and (min-width: 440px) {
+    .inv{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .latesticon-text{
+        display: none;
+    }
+    .inv{
+        position: relative;
+        bottom:18px;
+        left: 39px;
+    }
+    .latesticon-icon{
+        font-size: 30px;
+        position: relative;
+        top: 15px;
+        margin-right: 8px;
+    }
+    .in{
+        float: left;
+        position: relative;
+        right:5px;
+    }
+}

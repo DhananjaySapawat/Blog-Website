@@ -1,0 +1,26 @@
+footer{
+    background-color: rgb(93, 175, 68);
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+  }
+  footer section{
+      margin-bottom: 20px;
+  }
+  footer section a{
+    margin-right:10px;
+    font-size: 30px;
+  }
+  footer section i{
+    color: #fff;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 50%; 
+    border: 1px solid #fff;
+  }
+  footer div div{
+    font-size: 20px;
+  }

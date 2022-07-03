@@ -1,0 +1,232 @@
+@media screen and (min-width: 1240px) {
+    .small{
+        height:165px;
+        border : 2px solid white;
+        border-right-color: black;
+    }
+    .small img{
+        width:30%;
+        float:right;
+        height:110px;
+        margin-right: 8%;
+        position : relative;
+        top:13px;
+    }
+    .comp{
+        width:226px;
+    }
+    .comp-top{
+        height:60px;
+    }
+    .comp-top-icon{
+        float:left;
+        font-size: 32px;
+        margin-top: 0px;
+        position: relative;
+        top:15px;
+    }
+    .comp-top-text{
+        width: 82%;
+        float:right;
+        padding: 0;
+        height:30px;
+        font-size:16px; 
+    }
+    .com{
+        margin-top:-17px;
+    }
+    .com span{
+        font-weight: 600;
+    }
+    .comptext{
+        font-weight: 600;
+    }
+    .topclick {
+        position: relative;
+        bottom:12px;
+        height:58px;
+        font-weight: 900;
+        color:black;
+    }
+    .topdate{
+        position: relative;
+        bottom:20px;
+        font-weight: 900;
+    }
+}
+@media screen and (max-width: 1240px) and (min-width:930px){
+    .small{
+        height:250px;
+        border : 2px solid white;
+        border-right-color: black;
+    }
+    .small img{
+        width:323px;
+        float:right;
+        height:220px;
+        margin-right: 8%;
+        position : relative;
+        top:13px;
+    }
+    .comp{
+        width:50%;
+    }
+    .comp-top{
+        height:60px;
+    }
+    .comp-top-icon{
+        float:left;
+        font-size: 32px;
+        margin-top: 0px;
+        position: relative;
+        top:15px;
+    }
+    .comp-top-text{
+        width: 82%;
+        float:left;
+        padding: 0;
+        height:30px;
+        font-size:15px;
+        position: relative;
+        top:8px;
+        left:8px;
+    }
+    .com{
+        float:left;
+        margin-left: 4px;
+    }
+    .com span{
+        font-weight: 600;
+    }
+    .comptext{
+        font-weight: 600;
+        float:left;
+    }
+    .topclick {
+        position: relative;
+        bottom:12px;
+        height:58px;
+        font-weight: 900;
+        color:black;
+    }
+    .topdate{
+        position: relative;
+        top:50px;
+        font-weight: 900;
+    }
+}
+@media screen and (max-width: 930px) and (min-width:530px) {
+    .small{
+        height:165px;
+        border : 2px solid white;
+        border-right-color: black;
+    }
+    .small img{
+        width:30%;
+        float:right;
+        height:110px;
+        margin-right: 8%;
+        position : relative;
+        top:13px;
+    }
+    .comp{
+        width:226px;
+    }
+    .comp-top{
+        height:60px;
+    }
+    .comp-top-icon{
+        float:left;
+        font-size: 32px;
+        margin-top: 0px;
+        position: relative;
+        top:15px;
+    }
+    .comp-top-text{
+        width: 82%;
+        float:right;
+        padding: 0;
+        height:30px;
+        font-size:16px; 
+    }
+    .com{
+        margin-top:-17px;
+    }
+    .com span{
+        font-weight: 600;
+    }
+    .comptext{
+        font-weight: 600;
+    }
+    .topclick {
+        position: relative;
+        bottom:12px;
+        height:58px;
+        width:200%;
+        font-weight: 900;
+        color:black;
+    }
+    .topdate{
+        position: relative;
+        bottom:20px;
+        font-weight: 900;
+    }
+}
+@media screen and (max-width: 530px) and (min-width:440px) {
+    .small{
+        height:165px;
+        border : 2px solid white;
+        border-right-color: black;
+    }
+    .small img{
+        width:30%;
+        float:right;
+        height:110px;
+        margin-right: 8%;
+        position : relative;
+        top:13px;
+        display: none;
+    }
+    .comp{
+        width:226px;
+    }
+    .comp-top{
+        height:60px;
+    }
+    .comp-top-icon{
+        float:left;
+        font-size: 32px;
+        margin-top: 0px;
+        position: relative;
+        top:15px;
+    }
+    .comp-top-text{
+        width: 82%;
+        float:right;
+        padding: 0;
+        height:30px;
+        font-size:16px; 
+    }
+    .com{
+        margin-top:-17px;
+    }
+    .com span{
+        font-weight: 600;
+    }
+    .comptext{
+        font-weight: 600;
+    }
+    .topclick {
+        position: relative;
+        bottom:12px;
+        height:58px;
+        width:150%;
+        font-weight: 900;
+        color:black;
+    }
+    .topdate{
+        position: relative;
+        bottom:20px;
+        font-weight: 900;
+    }
+}
