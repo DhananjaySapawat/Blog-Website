@@ -4,7 +4,7 @@
 
 First clone the repository from Github and switch to the new directory:
 
-    $ git clone https://github.com/DhananjaySapawat/PostArticleWeb.git
+    $ git clone https://github.com/DhananjaySapawat/Blog-Website.git
     $ cd Blog-Website
     $ cd backend
     
