@@ -11,7 +11,7 @@ First clone the repository from Github and switch to the new directory:
 Activate the virtualenv for your project.
 
     $ python -m venv venv
-    $ source venv\Scripts\activate
+    $ source venv/Scripts/activate
     
 Install project dependencies:
 
@@ -21,7 +21,7 @@ Install React Modules:
 
     $ cd frontend
     $ npm install ( if not work use yarn add node-modules (in window) or sudo npm install (in linux) )
- 
+    $ cd ..
 Then simply apply the migrations:
    
     $ python manage.py migrate
