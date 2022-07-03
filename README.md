@@ -6,7 +6,7 @@ First clone the repository from Github and switch to the new directory:
 
     $ git clone https://github.com/DhananjaySapawat/PostArticleWeb.git
     $ cd Blog-Website
-    $ cd article
+    $ cd backend
     
 Activate the virtualenv for your project.
 
@@ -19,11 +19,8 @@ Install project dependencies:
     
 Install React Modules:
 
-    $ cd article
     $ cd frontend
-    $ python manage.py migrate
     $ npm install ( if not work use yarn add node-modules (in window) or sudo npm install (in linux) )
-    $ cd ..
  
 Then simply apply the migrations:
    
